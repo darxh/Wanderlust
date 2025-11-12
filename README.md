@@ -136,7 +136,7 @@ npm run dev
 npm start
 ```
 
-The application will be available at `http://localhost:8080`
+The application will be available at: `http://localhost:8080`
 
 ## Project Structure
 
