@@ -108,8 +108,11 @@ app.all("*", (req, res, next) => {
 //error middlewares
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "something went wrong" } = err;
+  // If curruser is not set (because of a DB error), set it to null so navbar.ejs doesn't crash
+  if (!res.locals.curruser) {
+    res.locals.curruser = null;
+  }
   res.status(statusCode).render("error.ejs", { err });
-  // res.status(statusCode).send(message);
 });
 
 const port = process.env.PORT || 8080;
